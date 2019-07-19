@@ -4,13 +4,18 @@ import * as Yup from "yup";
 import axios from "axios";
 import PropTypes from "prop-types";
 
-function Login({ values, FormikBag }) {
+function Login({ touched, values, errors, FormikBag, isSubmitting }) {
   return (
     <div>
       <FormK>
         <Field name="username" placeholder="username" />
+        {touched.username && errors.username && <div>{errors.username}</div>}
         <Field name="password" placeholder="password" type="password" />
-        <button type="submit">submit</button>
+        {touched.password && errors.password && <div>{errors.password}</div>}
+        <button type="submit" disabled={isSubmitting}>
+          submit
+        </button>
+        {isSubmitting && <div>Submitting...</div>}
       </FormK>
     </div>
   );
@@ -33,5 +38,12 @@ export default withFormik({
       .then(console.log)
       .catch(error => console.log(error));
   },
-  validationSchema(values) {},
+  validationSchema: Yup.object().shape({
+    username: Yup.string()
+      .min(4)
+      .required(),
+    password: Yup.string()
+      .min(4)
+      .required(),
+  }),
 })(Login);
