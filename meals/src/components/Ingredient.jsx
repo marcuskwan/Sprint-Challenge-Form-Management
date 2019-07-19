@@ -10,7 +10,7 @@ function Ingredient({ ingredient }) {
 }
 
 Ingredient.propTypes = {
-  ingredient: PropTypes.arrayOf(PropTypes.string),
+  ingredient: PropTypes.string,
 };
 
 export default Ingredient;

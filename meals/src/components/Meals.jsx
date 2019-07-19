@@ -4,7 +4,7 @@ import axiosWithAuth from "../functions/axiosWithAuth";
 import PropTypes from "prop-types";
 
 function Meals({ history }) {
-  const [meals, setMeals] = useState([]);
+  const [meals, setMeals] = useState(false);
   const logout = event => {
     event.preventDefault();
     localStorage.removeItem("token");
@@ -12,20 +12,22 @@ function Meals({ history }) {
   };
   useEffect(() => {
     const url = "http://localhost:5000/api/restricted/data";
-    axiosWithAuth()
-      .get(url)
-      .then(response => {
-        console.log("get success! ", response);
-        setMeals(response.data);
-      })
-      .catch(error => console.log(error));
+    console.log("in use effect");
+    localStorage.getItem("token") &&
+      axiosWithAuth()
+        .get(url)
+        .then(response => {
+          console.log("get success! ", response);
+          if (meals === false) setMeals(response.data);
+        })
+        .catch(error => console.log(error));
   }, [meals]);
   return (
     <div>
-      <button className="logout" onClick={event => logout(event)}>logout</button>
-      {meals.map(meal => (
-        <Meal meal={meal} />
-      ))}
+      <button className="logout" onClick={event => logout(event)}>
+        logout
+      </button>
+      {meals && meals.map(meal => <Meal key={meal} meal={meal} />)}
     </div>
   );
 }

@@ -20,7 +20,7 @@ function Meal({ meal }) {
       <div>
         <div className="ingredients">Ingredients</div>
         {meal.ingredients.map(ingredient => (
-          <Ingredient ingredient={ingredient} />
+          <Ingredient key={ingredient} ingredient={ingredient} />
         ))}
       </div>
     </div>
@@ -28,7 +28,7 @@ function Meal({ meal }) {
 }
 
 Meal.propTypes = {
-  meal: PropTypes.array,
+  meal: PropTypes.object,
 };
 
 export default Meal;

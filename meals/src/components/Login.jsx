@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { withFormik, Form as FormK, Field, FormikBag } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -7,16 +7,27 @@ import PropTypes from "prop-types";
 
 function Login({ touched, values, errors, formikBag, isSubmitting, history }) {
   const [token, setTokenToLocalStorage] = useLocalStorage("token");
+  const [isLoading, setIsLoading] = useState(false);
   const login = event => {
     event.preventDefault();
     const url = "http://localhost:5000/api/register";
+    const test = () => { setIsLoading(!isLoading)
+console.log("in test: ", isLoading)
+    }
     axios
       .post(url, values)
       .then(response => {
-        console.log("post success! ",response);
+        console.log("post success! ", response);
         response.data.token && setTokenToLocalStorage(response.data.token);
+        test();
+        setIsLoading(true);
       })
-      .then(history.push("/meals"))
+      .then(() => {
+        test()
+        setTimeout(() => history.push("/meals"), 1000);
+        setIsLoading(false);
+        console.log("second", isLoading);
+      })
       .catch(error => console.log(error));
   };
   return (
@@ -34,6 +45,7 @@ function Login({ touched, values, errors, formikBag, isSubmitting, history }) {
         </button>
         {isSubmitting && <div>Submitting...</div>}
       </FormK>
+      {isLoading && <div>Loading..</div>}
     </div>
   );
 }
