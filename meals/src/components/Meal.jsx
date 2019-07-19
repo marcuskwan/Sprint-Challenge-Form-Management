@@ -17,6 +17,8 @@ function Meal({ meal }) {
   );
 }
 
-Meal.propTypes = {};
+Meal.propTypes = {
+    meal: PropTypes.array
+};
 
 export default Meal;
