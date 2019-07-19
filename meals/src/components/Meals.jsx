@@ -22,7 +22,7 @@ function Meals({ history }) {
   }, [meals]);
   return (
     <div>
-      <button onClick={event => logout(event)}>logout</button>
+      <button className="logout" onClick={event => logout(event)}>logout</button>
       {meals.map(meal => (
         <Meal meal={meal} />
       ))}
