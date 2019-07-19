@@ -24,16 +24,18 @@ In the challenge for this Sprint, you will demonstrate proficiency by creating a
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] Why are forms used so often in web applications and software?
-
-- [ ] What advantages are there by using a forms library like Formik?
-
-- [ ] What is stateful logic?
-
-- [ ] What is a custom hook, and what does it mean to compose hooks together?
-
-- [ ] Describe the process of retriving a token from a server and using that token in subsequent API calls.
-
+- [x ] Why are forms used so often in web applications and software?
+Because we want to capture a lot of data entered by users
+- [x ] What advantages are there by using a forms library like Formik?
+handleChanges is attached for you
+onSubmit is attached to the form
+Other methods such as Reset form are available to be used
+- [ x] What is stateful logic?
+Logic that manipulates state, like something that sets state or changes it when an event happens.
+- [ x] What is a custom hook, and what does it mean to compose hooks together?
+Custom hooks are hooks you make yourself, that normally use the normal hooks API inside them. Custom hooks normally return an array with a variable and a setter function for that variable. Composing hooks together means utilizing hooks that call hooks within hooks, whether it be calling the normal hooks API (useEffect,useState) or by calling other custom hooks within hooks.
+- [x ] Describe the process of retriving a token from a server and using that token in subsequent API calls.
+Getting a token is important because without it, we don't know if a user is logged in or not. Server sends a token back if you've successfully made a POST request, which happens when you log in the right credentials which a server verifies.
 ## Project Set Up
 
 Follow these steps to set up and work on your project:
