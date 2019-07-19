@@ -6,7 +6,7 @@ const useLocalStorage = key => {
   });
   const setTokenToLocalStorage = serverToken => {
     setToken(serverToken);
-    localStorage.setItem(key, JSON.stringify(serverToken));
+    localStorage.setItem(key, serverToken);
   };
   return [token, setTokenToLocalStorage];
 };

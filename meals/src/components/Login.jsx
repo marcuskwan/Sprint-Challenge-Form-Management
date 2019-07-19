@@ -13,7 +13,7 @@ function Login({ touched, values, errors, formikBag, isSubmitting, history }) {
     axios
       .post(url, values)
       .then(response => {
-        console.log(response);
+        console.log("post success! ",response);
         response.data.token && setTokenToLocalStorage(response.data.token);
       })
       .then(history.push("/meals"))
