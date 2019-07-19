@@ -1,14 +1,24 @@
 import React from "react";
-import Ingredient from "./Ingredient"
+import Ingredient from "./Ingredient";
 import PropTypes from "prop-types";
 
 function Meal({ meal }) {
   return (
-    <div>
-      <div>{meal.name}</div>
-      <div>{meal.course}</div>
-      <div>{meal.technique}</div>
+    <div className="meal">
       <div>
+        <div className="name">Name</div>
+        {meal.name}
+      </div>
+      <div>
+        <div className="course">Course</div>
+        {meal.course}
+      </div>
+      <div>
+        <div className="technique">Technique</div>
+        {meal.technique}
+      </div>
+      <div>
+        <div className="ingredients">Ingredients</div>
         {meal.ingredients.map(ingredient => (
           <Ingredient ingredient={ingredient} />
         ))}
@@ -18,7 +28,7 @@ function Meal({ meal }) {
 }
 
 Meal.propTypes = {
-    meal: PropTypes.array
+  meal: PropTypes.array,
 };
 
 export default Meal;
