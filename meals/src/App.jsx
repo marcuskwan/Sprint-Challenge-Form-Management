@@ -1,8 +1,8 @@
-import React from 'react';
-import Login from "./components/Login"
-import Meals from "./components/Meals"
-import Route from "react-router-dom"
-import './App.css';
+import React from "react";
+import Login from "./components/Login";
+import Meals from "./components/Meals";
+import { Route } from "react-router-dom";
+import "./App.css";
 
 function App() {
   return (
