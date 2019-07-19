@@ -27,7 +27,7 @@ export default withFormik({
   },
   handleSubmit(values, formikBag) {
     formikBag.resetForm();
-    const url = "http://localhost:6000/api/register";
+    const url = "http://localhost:5000/api/register";
     axios
       .post(url, values)
       .then(console.log)
